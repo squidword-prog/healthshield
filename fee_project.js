@@ -468,10 +468,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Smooth scroll
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (mobileMenuBtn && navMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    // Smooth scroll and close mobile menu on click
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
+            
+            // Close mobile menu if open
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 target.scrollIntoView({

@@ -91,6 +91,30 @@ h4,
     color: var(--accent-red);
 }
 
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.mobile-menu-btn span {
+    width: 30px;
+    height: 3px;
+    background-color: var(--text-main);
+    transition: var(--transition);
+    border-radius: 2px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
 /* Hero Section */
 .hero {
     margin-top: 70px;
@@ -516,11 +540,96 @@ footer {
 
 @media (max-width: 768px) {
     .hero-content h1 {
-        font-size: 4rem;
+        font-size: 3.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
     }
 
     .calculator-card {
         max-width: 100%;
+        padding: 1.5rem;
+    }
+    
+    .section-title h2 {
+        font-size: 2.8rem;
+    }
+    
+    .section-title h2::after {
+        width: 80%;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: var(--bg-dark);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 3rem;
+        transition: 0.3s ease-in-out;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+        width: 100%;
+    }
+    
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+        background-color: var(--accent-red);
+    }
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+        background-color: var(--accent-red);
+    }
+    
+    .about-card, .info-card {
+        padding: 1.5rem;
+    }
+    
+    .macro-grid {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .section-title h2 {
+        font-size: 2rem;
+    }
+    
+    .result-box h4 {
+        font-size: 3rem;
+    }
+    
+    .form-group label {
+        font-size: 1rem;
+    }
+    
+    .timer-display h4 {
+        font-size: 3.5rem !important;
     }
 }
 
@@ -605,20 +714,8 @@ footer {
 
 
 /* -------------------------------------
-   Macro Scanner API Styles
+   Macro Scanner API Styles (REMOVED)
 -------------------------------------- */
-.macro-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-top: 15px;
-}
-
-@media (min-width: 480px) {
-    .macro-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
 
 .macro-stat {
     background-color: var(--bg-dark);
